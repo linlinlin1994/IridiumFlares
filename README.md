@@ -9,6 +9,8 @@ An Iridium flare lasts 10 to 20 seconds and can reach magnitude -9 (brighter tha
 
 Data on flares can be found on heavens-above.com.
 
+In this project, daytime flares are not included.
+
 
 Check here for some videos:
 https://www.youtube.com/watch?v=MTGVuPr9Epg

@@ -78,7 +78,7 @@ public class CityLatLongCrawler {
         try{
             FileWriter fileStream = new FileWriter(FileConstants.CITIES_LOCATION_FILE_PATH);
             BufferedWriter out = new BufferedWriter(fileStream);
-            out.write("city,country,latitude,longitude" + "\n");
+            out.write(FileConstants.CITIES_LOCATION_FILE_HEADER + "\n");
             for(Map.Entry<String, String> record: citiesLocationMap.entrySet()){
                 out.write(record.getKey() + "," + record.getValue() + "\n");
             }
