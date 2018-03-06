@@ -55,6 +55,7 @@ public class CityLatLongCrawler {
         citiesLocation = citiesLocation.subList(2, citiesLocation.size());
         for(WebElement cityLocation: citiesLocation){
             String cityName = cityLocation.findElement(By.xpath(".//td[1]")).getText();
+            cityName = cityName.substring(0, cityName.indexOf(",") + 1) + cityName.substring(cityName.indexOf(",") + 2, cityName.length());
 
             String cityLatitudeDegree = cityLocation.findElement(By.xpath(".//td[2]")).getText();
             String cityLatitudeDecimal = cityLocation.findElement(By.xpath(".//td[3]")).getText();
@@ -77,6 +78,7 @@ public class CityLatLongCrawler {
         try{
             FileWriter fileStream = new FileWriter(FileConstants.CITIES_LOCATION_FILE_PATH);
             BufferedWriter out = new BufferedWriter(fileStream);
+            out.write("city,country,latitude,longitude" + "\n");
             for(Map.Entry<String, String> record: citiesLocationMap.entrySet()){
                 out.write(record.getKey() + "," + record.getValue() + "\n");
             }
