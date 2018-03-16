@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="styles.css">
+	<title>Map</title>
+	<!-- Global Site Tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-62809346-2"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+
+		function gtag() {
+			dataLayer.push(arguments)
+		};
+		gtag('js', new Date());
+		gtag('config', 'UA-62809346-2');
+
+	</script>
+</head>
+
+<body>
+	<ul>
+		<li><a class="active" href="#home">Home</a></li>
+		<li><a href="#news">News</a></li>
+		<li><a href="#contact">Contact</a></li>
+		<li style="float:right"><a href="#about">About</a></li>
+	</ul>
+
+	<div id="btn-zoom">
+		<i id="btn-zoom--in" class="fa fa-search-plus fa-2x" aria-hidden="true"></i>
+		<i id="btn-zoom--out" class="fa fa-search-minus fa-2x" aria-hidden="true"></i>
+		<button id="btn-zoom--return" type="button"> Refresh</button>
+		<br>
+		<i id="map__text" type="button" onclick="refresh()">Select a country on the map ...</i>
+		<br>
+		<i id="date__text">Select a time on the slider ...<i/>
+	</div>
+	
+	<div id="map__container">
+	<script src="world.json"></script>
+	<script src="map.js"></script>
+	</div>
+<!--	<iframe id="detail" src="http://www.heavens-above.com/wholeskychart.ashx?lat=36.9741&lng=-122.0308&loc=%E5%9C%A3%E5%A1%94%E5%85%8B%E9%B2%81%E5%85%B9&alt=7&tz=PST&size=800&SL=1&SN=1&BW=0&time=58184.95319&ecl=0&cb=0" width="800" height="800"></iframe>-->
+	<div  z-index = 3><input id = "choosetime" type="range" min="1520020800"  max="1520625600" onchange="myFunction()"><div/>
+	<script>
+		
+		function myFunction() {
+    	var x = document.getElementById("choosetime").value;
+		var d = new Date(x*1000);
+		type = new Array("-");
+		timeStr = "You've selected " + d.getFullYear() + type[0]+ (d.getMonth() + 1) +type[0]+ d.getDate()  +" " +" "+ d.getHours() + ":" + d.getMinutes()+":"+d.getSeconds();
+    	document.getElementById("date__text").innerHTML = timeStr;
+		}
+		
+		
+	</script>
+<!--	<div id ="back"><div/>-->
+
+</body>
+
+</html>
